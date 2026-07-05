@@ -1,15 +1,15 @@
-const express = require('express');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const useragent = require('express-useragent');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const { errorHandler } = require('./middleware/errorMiddleware');
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const useragent = require("express-useragent");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const { errorHandler } = require("./middleware/errorMiddleware");
 
 // Load environment variables
 dotenv.config();
 
-// Connect to Database
+// Connect Database
 connectDB();
 
 const app = express();
@@ -23,6 +23,7 @@ app.use(useragent.express());
 // CORS configuration (supports cookie credentials)
 const allowedOrigins = [
   'http://localhost:3000',
+  'https://akm-project-one.vercel.app',
   'https://akm-project-iws5xa29n-shamil-s-projects7.vercel.app'
 ];
 if (process.env.CLIENT_URL) {
@@ -50,28 +51,29 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'healthy', timestamp: new Date() });
+// Health Check
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is running",
+  });
 });
 
-// Mount Routes
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/courses', require('./routes/courseRoutes'));
-app.use('/api/sections', require('./routes/sectionRoutes'));
-app.use('/api/lessons', require('./routes/lessonRoutes'));
-app.use('/api/enrollments', require('./routes/enrollmentRoutes'));
-app.use('/api/sessions', require('./routes/sessionRoutes'));
-app.use('/api/settings', require('./routes/settingsRoutes'));
-app.use('/api/admin', require('./routes/adminRoutes'));
+// Routes
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/courses", require("./routes/courseRoutes"));
+app.use("/api/sections", require("./routes/sectionRoutes"));
+app.use("/api/lessons", require("./routes/lessonRoutes"));
+app.use("/api/enrollments", require("./routes/enrollmentRoutes"));
+app.use("/api/sessions", require("./routes/sessionRoutes"));
+app.use("/api/settings", require("./routes/settingsRoutes"));
+app.use("/api/admin", require("./routes/adminRoutes"));
 
-// Global Error Handler Middleware
+// Error Handler
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-const server = app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
-
-module.exports = server; // exported for testing if needed
