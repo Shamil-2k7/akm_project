@@ -1,4 +1,4 @@
-const API_URL ='https://akm-project.onrender.com';
+const API_URL =const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://akm-project.onrender.com/api'
 
 // Get or create a persistent unique Device ID for the client
 export const getDeviceId = () => {
