@@ -23,7 +23,7 @@ app.use(useragent.express());
 // CORS configuration (supports cookie credentials)
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'https://akm-project.onrender.com',
+    origin: process.env.CLIENT_URL || 'https://akm-project-iws5xa29n-shamil-s-projects7.vercel.app/',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
