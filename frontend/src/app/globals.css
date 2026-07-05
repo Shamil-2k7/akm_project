@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  /* Slate/Neutral Mapping (Chalkboard visual override) */
+  --color-white: #FAF9F4;
+  --color-slate-50: #FAF9F4;
+  --color-slate-100: #F0EEE3;
+  --color-slate-205: #E3E1D5;
+  --color-slate-200: #E3E1D5;
+  --color-slate-300: #C4C2B4;
+  --color-slate-400: #7C9885;
+  --color-slate-450: #7C9885;
+  --color-slate-500: #7C9885;
+  --color-slate-600: #4C5E53;
+  --color-slate-650: #4C5E53;
+  --color-slate-700: #1C2521;
+  --color-slate-750: #1C2521;
+  --color-slate-800: #1C2521;
+  --color-slate-805: #1C2521;
+  --color-slate-850: #1C2521;
+  --color-slate-855: #1C2521;
+  --color-slate-900: #1F2E28;
+  --color-slate-905: #1F2E28;
+  --color-slate-950: #141F1B;
+
+  /* Indigo/Purple/Pink mapped to Marigold warm accent */
+  --color-indigo-50: #FAF9F4;
+  --color-indigo-100: #F0EEE3;
+  --color-indigo-200: #E8A33D;
+  --color-indigo-300: #E8A33D;
+  --color-indigo-400: #E8A33D;
+  --color-indigo-500: #E8A33D;
+  --color-indigo-600: #C97F22;
+  --color-indigo-650: #E8A33D;
+  --color-indigo-700: #C97F22;
+  --color-indigo-800: #C97F22;
+  --color-indigo-900: #1F2E28;
+  --color-indigo-950: #141F1B;
+
+  --color-purple-50: #FAF9F4;
+  --color-purple-100: #F0EEE3;
+  --color-purple-200: #E8A33D;
+  --color-purple-300: #E8A33D;
+  --color-purple-400: #E8A33D;
+  --color-purple-500: #E8A33D;
+  --color-purple-600: #C97F22;
+  --color-purple-700: #C97F22;
+  --color-purple-800: #C97F22;
+  --color-purple-900: #1F2E28;
+  --color-purple-950: #141F1B;
+
+  --color-pink-50: #FAF9F4;
+  --color-pink-100: #F0EEE3;
+  --color-pink-200: #E8A33D;
+  --color-pink-300: #E8A33D;
+  --color-pink-400: #E8A33D;
+  --color-pink-500: #E8A33D;
+  --color-pink-600: #C97F22;
+  --color-pink-700: #C97F22;
+  --color-pink-800: #C97F22;
+  --color-pink-900: #1F2E28;
+  --color-pink-950: #141F1B;
+}
+
+:root {
+  --background: #FAF9F4;
+  --foreground: #1C2521;
+}
+
+.dark {
+  --background: #1F2E28;
+  --foreground: #FAF9F4;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), ui-sans-serif, system-ui;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+/* Custom animations and utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom scrollbars for clean visual layout */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 152, 133, 0.25);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(240, 238, 227, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 152, 133, 0.45);
+}
