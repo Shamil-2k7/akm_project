@@ -109,7 +109,7 @@ export default function Register() {
           className="text-lg tracking-wide uppercase"
           style={{ fontFamily: 'var(--font-display)', fontWeight: 600, color: COLOR.chalk }}
         >
-          EduSphere
+          AKM Academy
         </span>
       </div>
 

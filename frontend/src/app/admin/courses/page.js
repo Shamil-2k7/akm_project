@@ -19,6 +19,7 @@ export default function AdminCourses() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [thumbnail, setThumbnail] = useState('');
+  const [fee, setFee] = useState(0);
   const [isPublished, setIsPublished] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
 
@@ -42,6 +43,7 @@ export default function AdminCourses() {
     setTitle('');
     setDescription('');
     setThumbnail('');
+    setFee(0);
     setIsPublished(false);
     setIsModalOpen(true);
   };
@@ -51,6 +53,7 @@ export default function AdminCourses() {
     setTitle(course.title);
     setDescription(course.description);
     setThumbnail(course.thumbnail || '');
+    setFee(course.fee || 0);
     setIsPublished(course.isPublished);
     setIsModalOpen(true);
   };
@@ -65,7 +68,7 @@ export default function AdminCourses() {
     setFormLoading(true);
     setError('');
 
-    const body = { title, description, thumbnail, isPublished };
+    const body = { title, description, thumbnail, isPublished, fee: Number(fee) };
 
     try {
       if (editingCourse) {
@@ -224,6 +227,22 @@ export default function AdminCourses() {
               placeholder="https://example.com/image.png"
               value={thumbnail}
               onChange={(e) => setThumbnail(e.target.value)}
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-805 hover:border-slate-300 focus:border-indigo-500 rounded-xl py-3 px-4 text-xs text-slate-800 dark:text-slate-100 outline-none transition-all"
+            />
+          </div>
+
+          {/* Course Fee */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+              Course Fee ($)
+            </label>
+            <input
+              type="number"
+              min="0"
+              required
+              placeholder="e.g. 99"
+              value={fee}
+              onChange={(e) => setFee(e.target.value)}
               className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-805 hover:border-slate-300 focus:border-indigo-500 rounded-xl py-3 px-4 text-xs text-slate-800 dark:text-slate-100 outline-none transition-all"
             />
           </div>

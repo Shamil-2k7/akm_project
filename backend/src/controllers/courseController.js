@@ -105,7 +105,7 @@ const getCourseById = async (req, res, next) => {
 // @access  Private/Admin
 const createCourse = async (req, res, next) => {
   try {
-    const { title, description, thumbnail, isPublished } = req.body;
+    const { title, description, thumbnail, isPublished, fee } = req.body;
 
     if (!title || !description) {
       res.status(400);
@@ -117,6 +117,7 @@ const createCourse = async (req, res, next) => {
       description,
       thumbnail,
       isPublished: isPublished || false,
+      fee: fee !== undefined ? Number(fee) : 0,
     });
 
     res.status(201).json(course);
@@ -130,7 +131,7 @@ const createCourse = async (req, res, next) => {
 // @access  Private/Admin
 const updateCourse = async (req, res, next) => {
   try {
-    const { title, description, thumbnail, isPublished } = req.body;
+    const { title, description, thumbnail, isPublished, fee } = req.body;
 
     const course = await Course.findById(req.params.id);
     if (!course) {
@@ -142,6 +143,7 @@ const updateCourse = async (req, res, next) => {
     course.description = description || course.description;
     course.thumbnail = thumbnail !== undefined ? thumbnail : course.thumbnail;
     course.isPublished = isPublished !== undefined ? isPublished : course.isPublished;
+    course.fee = fee !== undefined ? Number(fee) : course.fee;
 
     const updatedCourse = await course.save();
     res.json(updatedCourse);

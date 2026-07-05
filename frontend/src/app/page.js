@@ -141,7 +141,7 @@ export default function Home() {
               className="text-xl tracking-wide"
               style={{ fontFamily: 'var(--font-display)', fontWeight: 600, color: COLOR.chalk }}
             >
-              EduSphere
+              AKM Academy
             </span>
           </div>
 
@@ -194,7 +194,7 @@ export default function Home() {
             className="text-lg mt-7 max-w-xl leading-relaxed"
             style={{ color: 'rgba(250,249,244,0.75)' }}
           >
-            EduSphere is a study platform built around real courses, real
+            AKM Academy is a study platform built around real courses, real
             progress, and a dashboard that doesn't get in your way.
           </p>
 
@@ -234,7 +234,7 @@ export default function Home() {
               One dashboard, every subject, no clutter.
             </h2>
             <p className="text-base leading-relaxed" style={{ color: '#4A5650' }}>
-              EduSphere brings your courses, notes, and progress into a single
+              AKM Academy brings your courses, notes, and progress into a single
               calm workspace. Learn new subjects, plan your study time, or
               work through material alongside classmates — it's built to get
               out of your way and let the studying happen.
@@ -322,7 +322,7 @@ export default function Home() {
                       className="text-xs font-semibold px-2.5 py-1 rounded-sm"
                       style={{ background: COLOR.marigold, color: COLOR.inkDeep }}
                     >
-                      $99
+                      {course.fee !== undefined ? (course.fee === 0 ? 'Free' : `$${course.fee}`) : 'Free'}
                     </span>
                   </div>
 
@@ -440,7 +440,7 @@ export default function Home() {
         className="w-full py-8 text-center text-xs"
         style={{ background: COLOR.ink, color: 'rgba(250,249,244,0.55)' }}
       >
-        <p>&copy; {new Date().getFullYear()} EduSphere. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} AKM Academy. All rights reserved.</p>
       </footer>
     </div>
   );

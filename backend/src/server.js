@@ -21,14 +21,34 @@ app.use(cookieParser());
 app.use(useragent.express());
 
 // CORS configuration (supports cookie credentials)
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:3000',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://akm-project-iws5xa29n-shamil-s-projects7.vercel.app'
+];
+if (process.env.CLIENT_URL) {
+  allowedOrigins.push(process.env.CLIENT_URL);
+}
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    const isAllowed = allowedOrigins.includes(origin) || 
+                      origin.endsWith('.vercel.app') || 
+                      origin.startsWith('http://localhost:') || 
+                      origin.startsWith('http://127.0.0.1:');
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Health check endpoint
 app.get('/health', (req, res) => {

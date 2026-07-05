@@ -207,16 +207,26 @@ export default function CourseWorkspace() {
           </div>
           <div className="md:w-2/3 p-8 flex flex-col justify-between space-y-6 relative z-10">
             <div className="space-y-3">
-              <span 
-                className="px-2.5 py-1 rounded-sm text-[10px] font-bold tracking-widest uppercase"
-                style={{ 
-                  background: isPending ? '#EAEAEA' : isRejected ? 'rgba(239, 68, 68, 0.1)' : COLOR.marigold, 
-                  color: COLOR.inkDeep,
-                  fontFamily: 'var(--font-mono)'
-                }}
-              >
-                {isPending ? 'Pending Approval' : isRejected ? 'Request Rejected' : 'Course Catalog'}
-              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span 
+                  className="px-2.5 py-1 rounded-sm text-[10px] font-bold tracking-widest uppercase"
+                  style={{ 
+                    background: isPending ? '#EAEAEA' : isRejected ? 'rgba(239, 68, 68, 0.1)' : COLOR.marigold, 
+                    color: COLOR.inkDeep,
+                    fontFamily: 'var(--font-mono)'
+                  }}
+                >
+                  {isPending ? 'Pending Approval' : isRejected ? 'Request Rejected' : 'Course Catalog'}
+                </span>
+                <span 
+                  className="px-2.5 py-1 rounded-sm text-[10px] font-bold tracking-widest uppercase bg-slate-800 text-white"
+                  style={{ 
+                    fontFamily: 'var(--font-mono)'
+                  }}
+                >
+                  {course.fee !== undefined ? (course.fee === 0 ? 'Free' : `$${course.fee}`) : 'Free'}
+                </span>
+              </div>
               <h1 
                 className="text-2xl md:text-3xl font-bold text-white tracking-tight"
                 style={{ fontFamily: 'var(--font-display)' }}

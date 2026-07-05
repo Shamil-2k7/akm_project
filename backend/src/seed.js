@@ -76,6 +76,7 @@ const seedDatabase = async () => {
       title: 'Next.js App Router Mastery',
       description: 'Master the next generation of React development. Learn routing, server components, data fetching, mutations, optimization and advanced production deployments.',
       thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=60',
+      fee: 4999,
       isPublished: true
     });
 
@@ -123,6 +124,7 @@ const seedDatabase = async () => {
       title: 'Secure Express API Design',
       description: 'Learn how to secure production Node.js Express APIs. Cover advanced JWT middleware token rotation, rate limiting, MongoDB protection, helmet security parameters, and device limits logic.',
       thumbnail: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&auto=format&fit=crop&q=60',
+      fee: 1999,
       isPublished: true
     });
 

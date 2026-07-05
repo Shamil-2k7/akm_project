@@ -15,6 +15,10 @@ const courseSchema = new mongoose.Schema(
       type: String,
       default: '/images/course-placeholder.jpg',
     },
+    fee: {
+      type: Number,
+      default: 0,
+    },
     isPublished: {
       type: Boolean,
       default: false,

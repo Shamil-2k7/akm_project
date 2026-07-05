@@ -1,4 +1,9 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+let baseApiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+// Dynamically correct missing /api suffix if not present
+if (baseApiUrl && !baseApiUrl.endsWith('/api') && !baseApiUrl.endsWith('/api/')) {
+  baseApiUrl = baseApiUrl.endsWith('/') ? `${baseApiUrl}api` : `${baseApiUrl}/api`;
+}
+const API_URL = baseApiUrl;
 
 // Get or create a persistent unique Device ID for the client
 export const getDeviceId = () => {

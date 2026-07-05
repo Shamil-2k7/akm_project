@@ -51,7 +51,13 @@ export default function CourseCard({ course, isEnrolled, progress, isAdmin, onEd
             color: COLOR.inkDeep 
           }}
         >
-          {enrollmentStatus === 'pending' ? 'Pending' : enrollmentStatus === 'rejected' ? 'Rejected' : '$99'}
+          {enrollmentStatus === 'pending' 
+            ? 'Pending' 
+            : enrollmentStatus === 'rejected' 
+              ? 'Rejected' 
+              : (course.fee !== undefined 
+                ? (course.fee === 0 ? 'Free' : `$${course.fee}`) 
+                : 'Free')}
         </span>
       </div>
 

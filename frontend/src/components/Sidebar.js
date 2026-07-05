@@ -84,7 +84,7 @@ export default function Sidebar() {
               className="font-bold text-sm tracking-wide text-white block uppercase"
               style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}
             >
-              EduSphere
+              AKM Academy
             </span>
             <span 
               className="block text-[9px] tracking-widest uppercase font-medium mt-0.5"
@@ -195,7 +195,7 @@ export default function Sidebar() {
             className="font-bold text-sm tracking-wide uppercase"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            EduSphere
+            AKM Academy
           </span>
         </div>
         <button
